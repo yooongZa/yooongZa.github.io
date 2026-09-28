@@ -24,4 +24,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - BLOG_GUIDE.md
+  - AGENTS.md
   - vendor

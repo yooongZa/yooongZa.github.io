@@ -3,6 +3,11 @@
 [블로그](https://yooongza.github.io/blog/)는 GitHub Pages와 Minima 기본 테마를 사용한다.
 루트 페이지와 `wrist-rosary/`는 기존 앱 지원 페이지다.
 
+## 작성·발행 기준
+
+[BLOG_GUIDE.md](BLOG_GUIDE.md)에 문체·분량, 원자료 확인, 최신 생성 음성 선택,
+Minima 사용, 코드 검증과 공개 배포 절차를 정리했다. 다음 회차를 작성하거나 기존 글을 수정할 때 이 기준을 따른다.
+
 ## 글 추가
 
 `_posts/YYYY-MM-DD-제목.md`에 글을 작성한다. 같은 날 여러 글을 올릴 때는 `date`의 시각으로 순서를 정한다.
