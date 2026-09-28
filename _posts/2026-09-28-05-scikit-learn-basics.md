@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "05. scikit-learn으로 처음 모델을 학습시키기"
+title: "02. scikit-learn으로 처음 모델을 학습시키기"
 date: 2026-09-28 10:00:00 +0900
 permalink: /blog/ai-study/05-scikit-learn-basics/
 description: "회귀와 분류, X와 y, 데이터 분할부터 학습·예측·평가까지 scikit-learn 기초를 정리한 개인 공부 기록."
@@ -289,7 +289,7 @@ AIFFEL 수업을 공부하며 만든 개인 노트를 바탕으로 다시 정리
 예제 실행 환경: Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0. 2026년 9월 28일에 실행했으며, 버전과 실행 환경에 따라 결과가 조금 달라질 수 있다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/04-data-preprocessing/">← 04. 결측치부터 스케일링까지, 전처리의 순서</a></p>
-<p><a href="/blog/ai-study/07-loss-and-accuracy/">07. Loss와 Accuracy가 다르게 움직이는 이유 →</a></p>
+<p><a href="/blog/ai-study/04-data-preprocessing/">← 01. 결측치부터 스케일링까지, 전처리의 순서</a></p>
+<p><a href="/blog/ai-study/07-loss-and-accuracy/">03. Loss와 Accuracy가 다르게 움직이는 이유 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="regression_example.py" download>회귀 코드</a> · <a href="classification_example.py" download>분류 코드</a> · <a href="article.md">Markdown</a>
 </nav>

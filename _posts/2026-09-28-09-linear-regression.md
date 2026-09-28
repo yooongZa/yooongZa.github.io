@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "09. 선형회귀를 직접 구현하며 정리한 경사하강법"
+title: "05. 선형회귀를 직접 구현하며 정리한 경사하강법"
 date: 2026-09-28 14:03:00 +0900
 permalink: /blog/ai-study/09-linear-regression/
 description: "선형회귀의 예측과 MSE, 기울기와 가중치 갱신을 손으로 계산하고 NumPy 구현을 scikit-learn과 비교한 개인 공부 기록."
@@ -8,7 +8,7 @@ description: "선형회귀의 예측과 MSE, 기울기와 가중치 갱신을 �
 
 <div class="audio-note">
 <p>복습 음성 · 12분 38초</p>
-<audio style="width: 100%;" controls preload="metadata" aria-label="09. 선형회귀를 직접 구현하며 정리한 경사하강법 복습 음성">
+<audio style="width: 100%;" controls preload="metadata" aria-label="05. 선형회귀를 직접 구현하며 정리한 경사하강법 복습 음성">
 <source src="/blog/assets/audio/09-linear-regression.mp3" type="audio/mpeg">
 <a href="/blog/assets/audio/09-linear-regression.mp3">음성 파일 듣기</a>
 </audio>
@@ -155,7 +155,7 @@ db = 2 × mean(error)
 
 한 특성은 몇 년 단위이고 다른 특성은 수백만 단위라면 계수마다 손실의 변화 규모가 크게 다를 수 있다. 경사하강법에서는 이런 차이가 학습을 어렵게 만들 수 있다.
 
-StandardScaler는 학습 데이터에서 각 열의 평균과 표준편차를 구한다. [04편](/blog/ai-study/04-data-preprocessing/)에서 정리한 순서대로 먼저 데이터를 나누고, 학습 데이터에만 `fit_transform()`을 쓴다. 테스트에는 학습 때 구한 기준으로 `transform()`만 적용한다.
+StandardScaler는 학습 데이터에서 각 열의 평균과 표준편차를 구한다. [01편](/blog/ai-study/04-data-preprocessing/)에서 정리한 순서대로 먼저 데이터를 나누고, 학습 데이터에만 `fit_transform()`을 쓴다. 테스트에는 학습 때 구한 기준으로 `transform()`만 적용한다.
 
 ```text
 자료 분할
@@ -285,7 +285,7 @@ AIFFEL 수업과 개인 복습 노트를 바탕으로 다시 정리했다. 위 �
 예제 실행 환경: Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0. 2026년 9월 28일에 합성 데이터 학습, 손계산 값, 중앙차분 기울기, scikit-learn 예측과의 일치를 확인했다. 실제 중고 가격 자료를 내려받거나 학습한 결과는 아니다. 버전과 환경에 따라 마지막 자릿수는 달라질 수 있다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/08-classification-metrics/">← 08. 분류 모델 평가, 정밀도·재현율과 임계값</a></p>
-<p><a href="/blog/ai-study/11-regularization-l1-l2/">11. 정칙화와 정규화, L1·L2가 헷갈렸던 이유 →</a></p>
+<p><a href="/blog/ai-study/08-classification-metrics/">← 04. 분류 모델 평가, 정밀도·재현율과 임계값</a></p>
+<p><a href="/blog/ai-study/11-regularization-l1-l2/">06. 정칙화와 정규화, L1·L2가 헷갈렸던 이유 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="linear_regression_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

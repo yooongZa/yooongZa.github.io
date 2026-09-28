@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "07. Loss와 Accuracy가 다르게 움직이는 이유"
+title: "03. Loss와 Accuracy가 다르게 움직이는 이유"
 date: 2026-09-28 14:02:58 +0900
 permalink: /blog/ai-study/07-loss-and-accuracy/
 description: "손실과 정확도의 차이, 교차 엔트로피 계산부터 학습 곡선·과적합·조기 종료까지 정리한 개인 공부 기록."
@@ -8,7 +8,7 @@ description: "손실과 정확도의 차이, 교차 엔트로피 계산부터 �
 
 <div class="audio-note">
 <p>복습 음성 · 11분 33초</p>
-<audio style="width: 100%;" controls preload="metadata" aria-label="07. Loss와 Accuracy가 다르게 움직이는 이유 복습 음성">
+<audio style="width: 100%;" controls preload="metadata" aria-label="03. Loss와 Accuracy가 다르게 움직이는 이유 복습 음성">
 <source src="/blog/assets/audio/07-loss-and-accuracy.mp3" type="audio/mpeg">
 <a href="/blog/assets/audio/07-loss-and-accuracy.mp3">음성 파일 듣기</a>
 </audio>
@@ -16,7 +16,7 @@ description: "손실과 정확도의 차이, 교차 엔트로피 계산부터 �
 
 모델을 학습시키면 Loss와 Accuracy가 나란히 나온다. 정확도가 높아지면 손실은 내려갈 것 같지만, 두 값이 꼭 반대로 움직이지는 않는다. 이번에는 각 숫자가 무엇을 세는지부터 다시 정리했다.
 
-[05편](/blog/ai-study/05-scikit-learn-basics/)에서 학습과 예측의 흐름을 봤다면, 이번에는 학습 중에 기록한 값을 읽는 방법이다. 작은 확률 예제로 계산을 확인하고, 학습 곡선에서 무엇을 점검할지 이어서 적어둔다.
+[02편](/blog/ai-study/05-scikit-learn-basics/)에서 학습과 예측의 흐름을 봤다면, 이번에는 학습 중에 기록한 값을 읽는 방법이다. 작은 확률 예제로 계산을 확인하고, 학습 곡선에서 무엇을 점검할지 이어서 적어둔다.
 
 ## 1. Loss와 Metric은 맡은 역할로 구분한다
 
@@ -206,7 +206,7 @@ AIFFEL 수업과 개인 복습 노트를 바탕으로 다시 정리했다. 위 �
 예제 실행 환경: Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0. 2026년 9월 28일에 지표 계산 예제를 실행했다. 딥러닝 모델 학습과 조기 종료 실행은 이번 확인 범위에 포함하지 않았다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/05-scikit-learn-basics/">← 05. scikit-learn으로 처음 모델을 학습시키기</a></p>
-<p><a href="/blog/ai-study/08-classification-metrics/">08. 분류 모델 평가, 정밀도·재현율과 임계값 →</a></p>
+<p><a href="/blog/ai-study/05-scikit-learn-basics/">← 02. scikit-learn으로 처음 모델을 학습시키기</a></p>
+<p><a href="/blog/ai-study/08-classification-metrics/">04. 분류 모델 평가, 정밀도·재현율과 임계값 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="loss_accuracy_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

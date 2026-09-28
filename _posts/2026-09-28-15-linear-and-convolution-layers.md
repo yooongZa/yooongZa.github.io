@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "15. Linear에서 CNN까지, 레이어가 바꾸는 것"
+title: "09. Linear에서 CNN까지, 레이어가 바꾸는 것"
 date: 2026-09-28 14:39:27 +0900
 permalink: /blog/ai-study/15-linear-and-convolution-layers/
 description: "Linear와 합성곱의 손계산, stride·padding·pooling과 출력 모양 및 매개변수 수를 정리한 개인 공부 기록."
@@ -8,7 +8,7 @@ description: "Linear와 합성곱의 손계산, stride·padding·pooling과 출�
 
 <div class="audio-note">
 <p>복습 음성 · 12분 33초</p>
-<audio style="width: 100%;" controls preload="metadata" aria-label="15. Linear에서 CNN까지, 레이어가 바꾸는 것 복습 음성">
+<audio style="width: 100%;" controls preload="metadata" aria-label="09. Linear에서 CNN까지, 레이어가 바꾸는 것 복습 음성">
 <source src="/blog/assets/audio/15-linear-and-convolution-layers.mp3" type="audio/mpeg">
 <a href="/blog/assets/audio/15-linear-and-convolution-layers.mp3">음성 파일 듣기</a>
 </audio>
@@ -252,6 +252,6 @@ Conv2d의 `in_channels`는 실제 채널 축과 맞아야 한다. `(N, H, W, C)`
 실행 환경은 Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0, PyTorch 2.13.0 (CPU)이며 2026년 9월 28일에 CPU에서 위의 작은 예제를 실행했다. 강의 복습 노트를 바탕으로 레이어의 계산을 다시 설명했고, 손계산·출력 모양·매개변수 수를 대조했다. 대용량 이미지나 사전 학습 모델은 내려받지 않았다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/14-dropout-batch-normalization/">← 14. Dropout과 Batch Normalization의 학습·평가 모드</a></p>
+<p><a href="/blog/ai-study/14-dropout-batch-normalization/">← 08. Dropout과 Batch Normalization의 학습·평가 모드</a></p>
 <a href="/blog/">글 목록</a> · <a href="layers_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

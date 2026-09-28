@@ -139,7 +139,7 @@ db = 2 × mean(error)
 
 한 특성은 몇 년 단위이고 다른 특성은 수백만 단위라면 계수마다 손실의 변화 규모가 크게 다를 수 있다. 경사하강법에서는 이런 차이가 학습을 어렵게 만들 수 있다.
 
-StandardScaler는 학습 데이터에서 각 열의 평균과 표준편차를 구한다. [04편](/blog/ai-study/04-data-preprocessing/)에서 정리한 순서대로 먼저 데이터를 나누고, 학습 데이터에만 `fit_transform()`을 쓴다. 테스트에는 학습 때 구한 기준으로 `transform()`만 적용한다.
+StandardScaler는 학습 데이터에서 각 열의 평균과 표준편차를 구한다. [01편](/blog/ai-study/04-data-preprocessing/)에서 정리한 순서대로 먼저 데이터를 나누고, 학습 데이터에만 `fit_transform()`을 쓴다. 테스트에는 학습 때 구한 기준으로 `transform()`만 적용한다.
 
 ```text
 자료 분할

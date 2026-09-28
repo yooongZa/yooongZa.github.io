@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04. 결측치부터 스케일링까지, 전처리의 순서"
+title: "01. 결측치부터 스케일링까지, 전처리의 순서"
 date: 2026-09-28 09:00:00 +0900
 permalink: /blog/ai-study/04-data-preprocessing/
 description: "결측치, 중복, 이상치, 스케일링, 인코딩과 구간화까지 전처리 수업에서 배운 내용을 정리한 공부 기록."
@@ -252,6 +252,6 @@ Cross-validation(교차 검증)을 할 때도 각 분할의 학습 부분에서�
 AIFFEL 수업을 공부하며 만든 개인 노트를 바탕으로 다시 정리했다. 글의 숫자 예제는 설명용으로 따로 만들었고, 위 음성은 기존 복습용 TTS(음성 합성) 파일이다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/05-scikit-learn-basics/">다음 글: 05. scikit-learn으로 처음 모델을 학습시키기 →</a></p>
+<p><a href="/blog/ai-study/05-scikit-learn-basics/">다음 글: 02. scikit-learn으로 처음 모델을 학습시키기 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="preprocessing_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

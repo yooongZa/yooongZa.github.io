@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08. 분류 모델 평가, 정밀도·재현율과 임계값"
+title: "04. 분류 모델 평가, 정밀도·재현율과 임계값"
 date: 2026-09-28 14:02:59 +0900
 permalink: /blog/ai-study/08-classification-metrics/
 description: "혼동행렬과 분류 지표, 임계값과 F-beta, PR·ROC 곡선 및 다중 클래스 평균을 정리한 개인 공부 기록."
@@ -8,13 +8,13 @@ description: "혼동행렬과 분류 지표, 임계값과 F-beta, PR·ROC 곡선
 
 <div class="audio-note">
 <p>복습 음성 · 12분 03초</p>
-<audio style="width: 100%;" controls preload="metadata" aria-label="08. 분류 모델 평가, 정밀도·재현율과 임계값 복습 음성">
+<audio style="width: 100%;" controls preload="metadata" aria-label="04. 분류 모델 평가, 정밀도·재현율과 임계값 복습 음성">
 <source src="/blog/assets/audio/08-classification-metrics.mp3" type="audio/mpeg">
 <a href="/blog/assets/audio/08-classification-metrics.mp3">음성 파일 듣기</a>
 </audio>
 </div>
 
-[07편](/blog/ai-study/07-loss-and-accuracy/)에서는 손실과 정확도가 서로 다른 정보를 담는다는 걸 봤다. 이번에는 분류 결과를 조금 더 나눠서 본다. 몇 개 맞혔는지에 더해, 무엇을 놓쳤고 무엇을 잘못 골랐는지 확인하는 내용이다.
+[03편](/blog/ai-study/07-loss-and-accuracy/)에서는 손실과 정확도가 서로 다른 정보를 담는다는 걸 봤다. 이번에는 분류 결과를 조금 더 나눠서 본다. 몇 개 맞혔는지에 더해, 무엇을 놓쳤고 무엇을 잘못 골랐는지 확인하는 내용이다.
 
 Precision과 Recall은 분모를 바꿔 외우기 쉬운 부분이라 혼동행렬부터 적었다. 뒤에서는 같은 점수에 임계값만 바꿔 보고, F1·PR 곡선·ROC 곡선까지 연결해본다.
 
@@ -278,7 +278,7 @@ AIFFEL 수업과 개인 복습 노트를 바탕으로 다시 정리했다. 위 �
 예제 실행 환경: Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0. 2026년 9월 28일에 지표 계산과 혼동행렬을 확인했다. 모델 학습, 실제 임계값 선택, 확률 보정 학습은 이번 예제의 범위에 포함하지 않았다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/07-loss-and-accuracy/">← 07. Loss와 Accuracy가 다르게 움직이는 이유</a></p>
-<p><a href="/blog/ai-study/09-linear-regression/">09. 선형회귀를 직접 구현하며 정리한 경사하강법 →</a></p>
+<p><a href="/blog/ai-study/07-loss-and-accuracy/">← 03. Loss와 Accuracy가 다르게 움직이는 이유</a></p>
+<p><a href="/blog/ai-study/09-linear-regression/">05. 선형회귀를 직접 구현하며 정리한 경사하강법 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="classification_metrics_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

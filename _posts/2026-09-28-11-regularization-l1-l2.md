@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "11. 정칙화와 정규화, L1·L2가 헷갈렸던 이유"
+title: "06. 정칙화와 정규화, L1·L2가 헷갈렸던 이유"
 date: 2026-09-28 14:39:24 +0900
 permalink: /blog/ai-study/11-regularization-l1-l2/
 description: "정칙화와 스케일링의 차이, L1의 희소성과 L2의 계수 축소를 작은 회귀 예제로 정리한 개인 공부 기록."
@@ -8,13 +8,13 @@ description: "정칙화와 스케일링의 차이, L1의 희소성과 L2의 계�
 
 <div class="audio-note">
 <p>복습 음성 · 12분 22초</p>
-<audio style="width: 100%;" controls preload="metadata" aria-label="11. 정칙화와 정규화, L1·L2가 헷갈렸던 이유 복습 음성">
+<audio style="width: 100%;" controls preload="metadata" aria-label="06. 정칙화와 정규화, L1·L2가 헷갈렸던 이유 복습 음성">
 <source src="/blog/assets/audio/11-regularization-l1-l2.mp3" type="audio/mpeg">
 <a href="/blog/assets/audio/11-regularization-l1-l2.mp3">음성 파일 듣기</a>
 </audio>
 </div>
 
-[09편](/blog/ai-study/09-linear-regression/)에서는 예측 오차가 작아지도록 가중치를 바꿨다. 그런데 학습 데이터의 오차만 계속 줄이는 것이 새 데이터에서도 잘 맞는 모델을 보장하지는 않는다. 이번에는 가중치에 제한을 주는 방법을 정리한다.
+[05편](/blog/ai-study/09-linear-regression/)에서는 예측 오차가 작아지도록 가중치를 바꿨다. 그런데 학습 데이터의 오차만 계속 줄이는 것이 새 데이터에서도 잘 맞는 모델을 보장하지는 않는다. 이번에는 가중치에 제한을 주는 방법을 정리한다.
 
 Regularization(정칙화)과 Normalization(정규화)은 이름이 비슷하다. 먼저 무엇을 바꾸는 작업인지 나누고, L1과 L2에서 가중치가 달라지는 이유를 작은 회귀 예제로 확인해봤다. 위 복습 음성은 기존 강의 복습용이고, 본문의 숫자와 코드는 별도로 만든 예제다.
 
@@ -238,7 +238,7 @@ Lasso는 뒤의 두 계수를 정확히 0으로 만들었다. 이번 정답 식�
 실행 환경은 Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0, PyTorch 2.13.0 (CPU)이며 2026년 9월 28일에 위의 작은 예제를 실행했다. 본문은 강의 복습 노트와 관련 개인 메모를 바탕으로 다시 정리했다. 대규모 데이터 학습이나 최적 하이퍼파라미터 탐색은 수행하지 않았다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/09-linear-regression/">← 09. 선형회귀를 직접 구현하며 정리한 경사하강법</a></p>
-<p><a href="/blog/ai-study/12-pytorch-tensor-basics/">12. PyTorch와 Tensor, 숫자에서 학습까지 →</a></p>
+<p><a href="/blog/ai-study/09-linear-regression/">← 05. 선형회귀를 직접 구현하며 정리한 경사하강법</a></p>
+<p><a href="/blog/ai-study/12-pytorch-tensor-basics/">07. PyTorch와 Tensor, 숫자에서 학습까지 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="regularization_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

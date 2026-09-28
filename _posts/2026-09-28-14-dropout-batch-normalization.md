@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "14. Dropout과 Batch Normalization의 학습·평가 모드"
+title: "08. Dropout과 Batch Normalization의 학습·평가 모드"
 date: 2026-09-28 14:39:26 +0900
 permalink: /blog/ai-study/14-dropout-batch-normalization/
 description: "Dropout의 확률과 배율, BatchNorm의 감마·베타 및 이동 통계, train·eval 차이를 확인한 개인 공부 기록."
@@ -8,7 +8,7 @@ description: "Dropout의 확률과 배율, BatchNorm의 감마·베타 및 이�
 
 <div class="audio-note">
 <p>복습 음성 · 12분 40초</p>
-<audio style="width: 100%;" controls preload="metadata" aria-label="14. Dropout과 Batch Normalization의 학습·평가 모드 복습 음성">
+<audio style="width: 100%;" controls preload="metadata" aria-label="08. Dropout과 Batch Normalization의 학습·평가 모드 복습 음성">
 <source src="/blog/assets/audio/14-dropout-batch-normalization.mp3" type="audio/mpeg">
 <a href="/blog/assets/audio/14-dropout-batch-normalization.mp3">음성 파일 듣기</a>
 </audio>
@@ -232,7 +232,7 @@ BatchNorm이 들어가면 학습이 안정돼 목표 성능에 더 적은 갱신
 실행 환경은 Python 3.12.9, NumPy 2.5.2, scikit-learn 1.9.0, PyTorch 2.13.0 (CPU)이며 2026년 9월 28일에 작은 CPU 예제를 실행했다. 강의 복습 노트를 바탕으로 정리했고, Dropout·BatchNorm의 계산과 모드 차이를 확인했다. 이미지 분류 모델의 재학습이나 정확도 비교는 수행하지 않았다.
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
-<p><a href="/blog/ai-study/12-pytorch-tensor-basics/">← 12. PyTorch와 Tensor, 숫자에서 학습까지</a></p>
-<p><a href="/blog/ai-study/15-linear-and-convolution-layers/">15. Linear에서 CNN까지, 레이어가 바꾸는 것 →</a></p>
+<p><a href="/blog/ai-study/12-pytorch-tensor-basics/">← 07. PyTorch와 Tensor, 숫자에서 학습까지</a></p>
+<p><a href="/blog/ai-study/15-linear-and-convolution-layers/">09. Linear에서 CNN까지, 레이어가 바꾸는 것 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="dropout_batchnorm_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>
