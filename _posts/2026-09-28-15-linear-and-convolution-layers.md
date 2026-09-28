@@ -253,5 +253,6 @@ Conv2d의 `in_channels`는 실제 채널 축과 맞아야 한다. `(N, H, W, C)`
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
 <p><a href="/blog/ai-study/14-dropout-batch-normalization/">← 08. Dropout과 Batch Normalization의 학습·평가 모드</a></p>
+<p><a href="/blog/ai-study/10-resnet-skip-connection/">10. ResNet과 Skip Connection, 깊게 쌓는 방법 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="layers_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

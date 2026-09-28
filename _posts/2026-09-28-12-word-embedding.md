@@ -1,0 +1,247 @@
+---
+layout: post
+title: "12. 워드 임베딩, 단어를 벡터로 바꾸고 배우기"
+date: 2026-09-28 15:14:12 +0900
+permalink: /blog/ai-study/12-word-embedding/
+description: "희소 표현과 임베딩 조회, Word2Vec·FastText·GloVe의 차이를 작은 조회·학습 예제로 정리한 공부 기록."
+---
+
+<div class="audio-note">
+<p>복습 음성 · 21분 43초 · 12·13편 임베딩·WEAT 통합 복습</p>
+<audio style="width: 100%;" controls preload="metadata" aria-label="12. 워드 임베딩, 단어를 벡터로 바꾸고 배우기 복습 음성">
+<source src="/blog/assets/audio/12-word-embedding-and-weat.mp3" type="audio/mpeg">
+<a href="/blog/assets/audio/12-word-embedding-and-weat.mp3">음성 파일 듣기</a>
+</audio>
+</div>
+
+지난 편에서는 문장을 토큰과 정수 ID로 바꿨다. 이번에는 그 ID로 조회하는 벡터를 정리한다. 단어를 세는 방법부터 임베딩 테이블, Word2Vec, FastText, GloVe까지 이어서 보고, 작은 예제로 실제 입력과 출력도 확인했다.
+
+위 음성은 **「워드 임베딩과 WEAT, 벡터화부터 연관 측정까지」의 최신 생성본**이다. 12·13편에서 같은 통합 음성을 사용한다. 이번 글은 단어 표현과 학습 원리, 다음 글은 WEAT 계산을 다룬다.
+
+## 1. 단어를 세는 것도 벡터화다
+
+Vectorization(벡터화)은 텍스트를 계산 가능한 숫자 표현으로 바꾸는 작업이다. 모든 벡터화가 신경망을 학습해야 하는 것은 아니다. 단어의 등장 횟수부터 세어볼 수 있다.
+
+BoW, Bag of Words(단어 주머니)는 문장을 단어의 빈도로 표현한다. 어휘 순서를 `고양이, 강아지, 책`으로 정했을 때 `고양이 고양이 책`은 `[2, 0, 1]`이 된다. 단어가 나온 순서는 사라진다.
+
+DTM, Document-Term Matrix(문서-단어 행렬)는 여러 문서의 이런 벡터를 행으로 쌓는다. 문서가 100개이고 어휘가 5,000개라면 `(100, 5000)` 모양이 된다.
+
+TF-IDF는 문서 안에서의 빈도와 여러 문서에 걸친 희귀도를 함께 반영한다. 거의 모든 문서에 있는 단어의 비중을 낮추고 특정 문서에 특징적으로 나타나는 단어를 더 두드러지게 만들 수 있다. 정확한 로그·보정·정규화 식은 구현마다 확인해야 한다.
+
+One-hot(원-핫)은 단어 하나를 나타낼 때 쓰는 가장 단순한 표시다. 사전에서 해당 단어의 자리만 1이고 나머지는 0이다. 문서 전체의 빈도를 담는 BoW와 표현 대상이 다르다.
+
+## 2. 희소 표현에서 밀집 표현으로
+
+Sparse Representation(희소 표현)은 대부분의 값이 0이다. 사전이 커지면 벡터의 차원도 커지지만, 희소 행렬로 저장하면 0을 전부 보관하는 낭비는 줄일 수 있다.
+
+One-hot에서 서로 다른 두 단어의 내적은 항상 0이다. 이 표현 자체에는 `고양이`와 `강아지`가 다른 단어보다 더 비슷하다는 관계가 들어 있지 않다.
+
+Dense Embedding(밀집 임베딩)은 단어마다 비교적 짧은 실수 벡터를 연결한다. 사전에 단어가 10,000개 있고 임베딩 차원이 100이면 테이블은 `(10000, 100)`이고 단어 하나는 길이 100의 벡터다.
+
+차원 하나에 동물성, 귀여움 같은 이름을 사람이 직접 붙여 넣는 방식으로 생각하면 실제 학습과 멀어진다. 보통 여러 좌표에 걸친 패턴이 관계를 표현한다. 숫자는 무작위 초기값이나 사전 학습 값에서 출발해 학습 목표에 따라 바뀐다.
+
+차원이 커지면 표현할 여지가 늘 수 있지만 데이터와 계산도 더 필요해진다. 높은 차원이 항상 나쁘거나, 큰 임베딩이 항상 더 정확한 것은 아니다.
+
+## 3. Cosine Similarity는 방향을 비교한다
+
+Cosine Similarity(코사인 유사도)는 두 벡터의 내적을 각각의 길이로 나눈다.
+
+```text
+cos(u, v) = dot(u, v) / (norm(u) × norm(v))
+```
+
+`[1, 1]`과 `[2, 2]`는 길이는 다르지만 같은 방향이어서 1이다. `[1, 1]`과 `[1, -1]`은 직교하므로 0, 정확히 반대 방향이면 -1이다.
+
+이번 수동 예제에서는 고양이 벡터를 `[1, 0, 0]`, 강아지 벡터를 `[0.8, 0.6, 0]`으로 정했다. 두 벡터의 길이는 모두 1이므로 코사인은 내적인 0.8이다. 사람이 설명하려고 정한 값이다.
+
+실제 학습 벡터에서 높은 코사인이 나왔다면 해당 학습 공간에서 비슷한 방향이라는 뜻으로 읽는다. 0.8을 ‘의미가 80% 같다’는 확률로 해석하지 않는다. 길이가 0인 벡터는 식의 분모가 0이므로 별도로 다뤄야 한다.
+
+## 4. 임베딩 조회는 행을 가져오는 계산이다
+
+어휘 크기가 V이고 임베딩 차원이 D라면 가중치 행렬 W의 모양은 `(V, D)`다. ID 2를 넣으면 W의 2번 행을 가져온다. 이것이 Embedding Lookup(임베딩 조회)이다.
+
+수학적으로는 ID 2의 one-hot 벡터와 W를 곱해도 같은 결과가 나온다. 실제 구현은 대부분이 0인 큰 벡터를 만들지 않고 해당 행을 조회한다.
+
+```text
+ID 입력:     (배치 수, 문장 길이)
+테이블 W:    (어휘 수, 임베딩 차원)
+출력:        (배치 수, 문장 길이, 임베딩 차원)
+```
+
+`nn.Embedding`을 만든 시점에는 아직 문맥을 배우지 않았다. 모델의 손실에서 역전파가 오고 Optimizer(최적화 도구)가 가중치를 갱신해야 값이 학습된다. 아래 예제의 첫 테이블은 조회 원리를 보기 위해 수동으로 채웠다.
+
+`padding_idx=0`은 패딩 행을 임베딩의 기울기 갱신에서 제외하는 설정이다. 문장 평균에서 패딩 개수를 빼는 작업은 별도로 한다. 관련 동작은 [PyTorch Embedding 문서](https://docs.pytorch.org/docs/stable/generated/torch.nn.Embedding.html)를 함께 참고했다.
+
+## 5. Word2Vec은 주변 문맥을 학습 신호로 쓴다
+
+Distributional Hypothesis(분포 가설)는 비슷한 문맥에서 쓰이는 단어가 비슷한 의미나 기능을 가질 가능성이 높다는 생각이다. `고양이가 물을 마신다`, `강아지가 물을 마신다`가 반복되면 고양이와 강아지는 주변 표현을 공유한다.
+
+Word2Vec은 이렇게 가까이 등장한 단어 관계로 학습 쌍을 만든다. 사람이 단어마다 벡터의 정답을 써주지 않아도 말뭉치에서 예측 문제를 만들 수 있다.
+
+Window(주변 범위)는 중심 단어의 양옆에서 어디까지 볼지 정한다. `나는 오늘 책을 읽는다`를 공백으로 나눈 뒤 `책을`을 중심으로 거리 1을 보면 주변 단어는 `오늘`, `읽는다`다.
+
+작은 window는 가까운 문법 관계를, 큰 window는 넓은 주제 관계를 더 담을 수 있다. 어느 쪽이 좋은지는 목적과 말뭉치에 달려 있다. 문장을 어떻게 토큰화했는지도 학습 쌍에 바로 영향을 준다.
+
+## 6. CBOW와 Skip-gram의 방향
+
+CBOW, Continuous Bag of Words(연속 단어 주머니)는 주변 단어들을 받아 중심 단어를 예측한다. Skip-gram은 중심 단어를 받아 주변 단어를 예측한다.
+
+```text
+문장: 나는 / 오늘 / 책을 / 읽는다
+
+CBOW:     오늘, 읽는다 → 책을
+Skip-gram: 책을 → 오늘
+           책을 → 읽는다
+```
+
+CBOW에서는 주변 단어의 벡터를 합하거나 평균내서 사용한다. 기본적인 평균 방식은 주변 단어의 순서를 보존하지 않는다. Skip-gram은 중심과 주변의 쌍을 각각 학습 사례로 만든다.
+
+두 방식은 입력 쪽 임베딩과 출력 쪽 가중치를 학습한다. 손실을 줄이는 과정에서 특정 문맥을 예측하는 데 도움이 되는 벡터가 만들어진다. 신경망의 층 이름으로서의 Embedding과, 학습 방법으로서의 Word2Vec을 구분해두면 코드가 덜 헷갈린다.
+
+## 7. Negative Sampling은 계산량을 줄인다
+
+단어 하나를 예측할 때 어휘 전체의 점수를 계산하는 Full Softmax(전체 소프트맥스)는 사전이 클수록 부담이 커진다.
+
+Negative Sampling(음성 표본 추출)은 관측된 문맥 쌍과 잡음 분포에서 뽑은 소수의 단어를 구분하는 학습 문제를 만든다. Skip-gram을 기준으로 보면 중심 단어와 실제 주변 단어의 점수는 올리고, 뽑힌 잡음 단어와의 점수는 낮추는 방향이다.
+
+여기서 negative는 그 단어가 언어적으로 반의어라는 뜻이 아니다. 말뭉치의 모든 위치에서 함께 나오지 않는다고 확인한 단어라는 뜻도 아니다. 정한 분포에서 뽑은 학습용 표본이다.
+
+중심과 주변 벡터의 내적을 점수로 사용하고 Sigmoid(시그모이드)를 거쳐 손실을 계산한다. 어휘 전체를 매번 계산하는 비용을 줄일 수 있으며, 선택된 negative 표본 역시 가중치 갱신에 참여한다.
+
+## 8. 조회 예제와 작은 CBOW 학습
+
+앞부분은 사람이 정한 6행짜리 테이블로 one-hot 곱과 lookup을 비교한다. PAD는 0, UNK는 1로 나눴다. 뒤에서는 직접 만든 짧은 문장 12개를 10번 반복해 총 120문장으로 Word2Vec을 학습한다.
+
+`vector_size=100`, `window=5`, `min_count=5`, `sg=0`을 사용했다. 각각 벡터 차원, 주변 단어의 최대 거리, 어휘에 남길 최소 등장 횟수, CBOW 선택이다. `epochs=5`로 짧게 실행하고, 실행 순서의 변동을 줄이기 위해 `workers=1`, `seed=42`를 사용했다. 설정의 의미는 [Gensim Word2Vec 문서](https://radimrehurek.com/gensim/models/word2vec.html)에서 확인했다.
+
+```python
+"""설명용 임베딩 조회와 작은 CBOW 학습. 외부 corpus를 받지 않는다."""
+import torch
+from torch import nn
+from torch.nn.functional import one_hot
+from gensim.models import Word2Vec
+
+
+def lookup_example():
+    vocab = {'<pad>': 0, '<unk>': 1, '고양이': 2, '강아지': 3, '책': 4, '읽는다': 5}
+    # 사람이 정한 설명용 숫자. 학습해서 얻은 값이 아니다.
+    weights = torch.tensor([
+        [0., 0., 0.], [0.1, 0.1, 0.1], [1., 0., 0.],
+        [0.8, 0.6, 0.], [0., 1., 0.], [0., 0., 1.],
+    ])
+    embedding = nn.Embedding.from_pretrained(weights, freeze=False, padding_idx=0)
+    ids = torch.tensor([[vocab['고양이'], vocab['책'], 0], [vocab['강아지'], 0, 0]])
+    vectors = embedding(ids)
+    via_one_hot = one_hot(ids, num_classes=len(vocab)).float() @ weights
+    mask = ids.ne(vocab['<pad>']).unsqueeze(-1)
+    # 예제의 각 문장에는 실제 토큰이 1개 이상 있다.
+    pooled = (vectors * mask).sum(dim=1) / mask.sum(dim=1)
+    print('ID 모양:', tuple(ids.shape))
+    print('벡터 모양:', tuple(vectors.shape))
+    print('one-hot 곱과 조회 일치:', torch.allclose(vectors, via_one_hot))
+    print('패딩 제외 평균:', [[round(v, 3) for v in row] for row in pooled.tolist()])
+    cos = torch.nn.functional.cosine_similarity(weights[2], weights[3], dim=0)
+    print('가상 고양이·강아지 cosine:', round(cos.item(), 3))
+    print('미등록 단어 ID:', vocab.get('새단어', vocab['<unk>']))
+    return embedding, ids, pooled
+
+
+def train_word2vec():
+    texts = [
+        '고양이 가 물 을 마신다', '강아지 가 물 을 마신다',
+        '고양이 가 집 에 산다', '강아지 가 집 에 산다',
+        '고양이 가 공 을 본다', '강아지 가 공 을 본다',
+        '학생 이 책 을 읽는다', '친구 가 책 을 읽는다',
+        '학생 이 글 을 쓴다', '친구 가 글 을 쓴다',
+        '학생 이 도서관 에 간다', '친구 가 도서관 에 간다',
+    ]
+    sentences = [text.split() for text in texts] * 10
+    model = Word2Vec(
+        sentences=sentences, vector_size=100, window=5, min_count=5,
+        sg=0, workers=1, seed=42, epochs=5,
+    )
+    print('Word2Vec 문장 수:', len(sentences))
+    print('Word2Vec 어휘 수:', len(model.wv))
+    print('고양이 벡터 모양:', model.wv['고양이'].shape)
+    print('가까운 단어:', [(word, round(score, 4))
+                         for word, score in model.wv.most_similar('고양이', topn=3)])
+    print('새단어가 어휘에 있음:', '새단어' in model.wv)
+    return model
+
+
+if __name__ == '__main__':
+    lookup_example()
+    train_word2vec()
+```
+
+실행 결과를 적어둔다.
+
+```text
+ID 모양: (2, 3)
+벡터 모양: (2, 3, 3)
+one-hot 곱과 조회 일치: True
+패딩 제외 평균: [[0.5, 0.5, 0.0], [0.8, 0.6, 0.0]]
+가상 고양이·강아지 cosine: 0.8
+미등록 단어 ID: 1
+Word2Vec 문장 수: 120
+Word2Vec 어휘 수: 20
+고양이 벡터 모양: (100,)
+가까운 단어: [('쓴다', 0.189), ('강아지', 0.1652), ('친구', 0.1029)]
+새단어가 어휘에 있음: False
+```
+
+첫 출력의 `(2, 3, 3)`은 문장 2개, 각 문장의 패딩 포함 길이 3, 임베딩 차원 3이다. 첫 문장의 실제 벡터 두 개를 평균내면 `[0.5, 0.5, 0.0]`이 된다. 두 번째 문장은 실제 토큰 하나뿐이라 그 벡터가 그대로 남는다.
+
+Word2Vec은 어휘 20개를 갖는 100차원 벡터를 만들었다. `most_similar()`의 이웃은 이 작은 학습에서 나온 실제 결과다. 같은 12문장을 반복해도 새로운 언어 사례가 늘어나는 것은 아니므로, 이 순위를 일반적인 단어 의미 관계로 받아들이지는 않는다. 조회와 학습이 연결된다는 것을 확인한 범위다.
+
+## 9. OOV와 저장할 파일
+
+OOV, Out-of-Vocabulary(어휘 밖 항목)는 처음 보는 단어일 수도 있고 `min_count`보다 적게 나와 제외된 단어일 수도 있다. Word2Vec에서 없는 단어를 바로 조회하면 `KeyError`가 날 수 있다. 예제처럼 `'새단어' in model.wv`로 확인할 수 있다.
+
+`model.wv`는 단어와 벡터를 조회하는 부분이다. 유사도 계산에 필요한 KeyedVectors만 저장하는 것과, 이후 학습을 이어갈 전체 Word2Vec 모델을 저장하는 것은 구분한다. 단어 벡터만 내보낸 파일에 재학습에 필요한 모든 상태가 들어 있다고 가정하지 않는다.
+
+직접 만든 분류기의 어휘에서 UNK 행을 두는 방법도 있다. 여러 미등록 단어가 그 한 행을 공유하므로, 처음 본 단어마다 뜻을 복원해주는 처리는 아니다.
+
+## 10. FastText는 문자 조각을 공유한다
+
+FastText는 단어를 Character n-gram(문자 n-그램) 조각으로도 표현한다. 비슷한 철자 부분이 여러 단어에 반복되면 그 조각의 벡터를 공유할 수 있다.
+
+학습 때 보지 못한 단어라도 구성 조각으로 벡터를 만들 수 있다는 점이 OOV 처리에 도움이 된다. 그렇다고 새로운 고유명사나 임의의 문자열의 의미를 정확히 안다는 보장은 없다. 형태가 비슷한 것과 의미가 비슷한 것은 다른 문제다.
+
+한국어는 음절 단위로 다룰 수도 있고 전처리에서 초성·중성·종성으로 나눌 수도 있다. 자모 분해를 쓴다면 학습과 추론에서 같은 규칙을 적용한다. FastText를 호출하는 것만으로 별도의 한국어 형태소 분석이나 원하는 자모 분해가 자동 적용되는 것으로 생각하지 않는다.
+
+문자 조각을 이용한 학습의 기본 설명은 [FastText 원 논문](https://aclanthology.org/Q17-1010/)을 참고할 수 있다.
+
+## 11. LSA와 GloVe는 전체 통계도 본다
+
+LSA, Latent Semantic Analysis(잠재 의미 분석)는 DTM이나 TF-IDF 행렬을 SVD, Singular Value Decomposition(특잇값 분해)로 나누고 일부 차원만 남겨 잠재 구조를 표현한다. 자주 함께 나타나는 패턴을 더 작은 공간에서 보는 방법이다.
+
+```text
+문서-단어 행렬 A ≈ U_k × Σ_k × V_k의 전치
+```
+
+남길 차원 k를 줄이면 저장과 계산을 줄일 수 있지만 정보도 잃는다. 어휘가 바뀌거나 새 데이터를 적용할 때 기존 변환과 어떻게 연결할지도 생각해야 한다.
+
+GloVe, Global Vectors(전역 벡터)는 말뭉치 전체의 단어 동시 등장 통계를 이용한다. 단어 i와 주변 단어 j가 함께 나온 횟수의 로그를 벡터 내적과 편향항으로 설명하도록 학습한다. 매우 드문 쌍과 흔한 쌍의 영향은 가중 함수로 조절한다. 목표식은 [GloVe 공식 페이지](https://nlp.stanford.edu/projects/glove/)에 나와 있다.
+
+Word2Vec은 국소 문맥에서 예측 문제를 만들고, GloVe는 집계한 동시 등장 행렬을 이용한다. FastText는 단어에 문자 조각을 더해 표현을 공유한다. 학습 신호와 OOV 처리 방식을 같이 놓고 보면 각 방법의 차이가 보인다.
+
+## 12. 그림과 유사도 결과를 읽는 범위
+
+Embedding Projector(임베딩 시각화 도구)에 벡터와 단어 라벨을 넣을 때는 두 파일의 행 수와 순서가 맞아야 한다. 벡터 첫 행이 고양이인데 라벨 첫 행이 책이면 엉뚱한 그림을 보게 된다.
+
+PCA나 t-SNE로 100차원을 2차원에 옮기면 관계 일부가 달라진다. 그림에서 가까운 두 점을 발견했다면 원래 벡터 공간의 유사도도 확인한다. 그림만으로 모델 품질 전체를 평가하기는 어렵다.
+
+기본 Word2Vec·GloVe·FastText는 같은 단어에 고정된 표현을 준다. `배`가 과일인지 탈것인지 주변 문장마다 다른 벡터가 바로 나오는 방식은 아니다. 문맥에 따라 표현을 바꾸는 Contextual Embedding(문맥 임베딩)은 ELMo나 Transformer 계열에서 이어서 공부할 내용이다.
+
+또 말뭉치의 반복 패턴에는 사회적 편향이나 수집 과정의 불균형도 들어갈 수 있다. 학습된 벡터의 연관을 그대로 보편적인 사실로 읽지 않는 이유다. 다음 편에서는 네 단어 집합을 놓고 상대적인 연관을 재는 WEAT를 정리한다.
+
+이번에는 **수동 lookup·코사인·패딩 평균과 작은 CBOW 학습·조회**까지 실행했다. 큰 사전 학습 모델 다운로드, FastText·GloVe 학습, 2차원 시각화는 실행하지 않았다.
+
+실행 환경: Python 3.12.9, NumPy 2.5.2, PyTorch 2.13.0 (CPU), SentencePiece 0.2.2, Gensim 4.4.0. 필요한 패키지는 `torch`, `gensim`이다. 실행 명령은 `PYTHONHASHSEED=42 python embedding_example.py`이며 라이브러리 버전이 달라지면 학습 결과도 달라질 수 있다.
+
+<nav aria-label="관련 글">
+<p><a href="/blog/ai-study/11-tokenizer-sentencepiece/">← 11. 토큰화와 SentencePiece, 문장에서 ID까지</a></p>
+<p><a href="/blog/ai-study/13-weat-association/">13. WEAT, 임베딩의 연관을 숫자로 읽기 →</a></p>
+<a href="/blog/">글 목록</a> · <a href="embedding_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
+</nav>
