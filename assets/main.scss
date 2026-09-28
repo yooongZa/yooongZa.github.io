@@ -2,6 +2,16 @@
 ---
 @import "minima";
 
+// Keep the longer site title readable on narrow screens.
+@include media-query($on-palm) {
+  .site-title {
+    line-height: 1.5;
+    padding: 8px 0;
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+}
+
 // Keep long inline API names inside the mobile content column.
 .post-content :not(pre) > code {
   overflow-wrap: anywhere;

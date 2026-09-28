@@ -1,4 +1,4 @@
-# yongZa의 공부 기록
+# yongZa의 AI 공부 기록과 복습용 음성 강의
 
 [블로그](https://yooongza.github.io/blog/)는 GitHub Pages와 Minima 기본 테마를 사용한다.
 루트 페이지와 `wrist-rosary/`는 기존 앱 지원 페이지다.
@@ -38,4 +38,4 @@ bundle exec jekyll serve
 
 `http://localhost:4000/blog/`에서 확인한다. `main`에 올리면 GitHub Pages가 빌드한다.
 Minima의 기본 레이아웃과 스타일을 사용한다. 헤더의 제목 링크는 `/blog/`로 지정하고,
-긴 인라인 코드가 모바일 화면 밖으로 넘치지 않도록 줄바꿈만 보완했다.
+긴 제목과 인라인 코드가 모바일에서도 읽히도록 줄바꿈을 보완했다.

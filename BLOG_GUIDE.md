@@ -53,12 +53,13 @@ NLP/ML 예제 코드를 만들거나 바꿀 때는 PRI_AI의 `EXAMPLES_INDEX.md`
 
 - Jekyll의 **Minima 기본 테마**를 유지한다. 기본 글 목록·본문·글꼴·코드 스타일을 사용한다.
 - 필요한 수정은 기존 `/blog/` 연결, 음성 플레이어, 모바일 넘침 보완 정도로 작게 한다.
+- 사이트 제목은 `yongZa의 AI 공부 기록과 복습용 음성 강의`로 쓴다. `/blog/`에서는 제목 다음에 바로 글 목록을 보여준다. 별도 `공부 기록` 제목, 수업 소개 문장, 회차 번호 안내, `글 목록` 소제목은 표시하지 않는다. 하단에도 삭제한 소개 문장을 반복하지 않는다.
 - 사이트 루트와 `wrist-rosary/`는 앱 지원·개인정보 페이지다. 블로그 변경 시 내용과 주소를 보존한다.
 
 | 역할 | 위치 |
 |---|---|
 | 발행 원본 | `_posts/YYYY-MM-DD-NN-slug.md` |
-| 글 목록 | `blog/index.html` — Minima `home`이 자동 구성 |
+| 글 목록 | `blog/index.html` — `_layouts/home.html`에서 Minima 목록 구성 유지, 소제목은 지정했을 때만 표시 |
 | 공개 글 주소 | `/blog/ai-study/NN-slug/` — front matter의 `permalink` |
 | 복습 음성 | `blog/assets/audio/NN-slug.mp3` |
 | 예제와 내려받기용 본문 | `blog/ai-study/NN-slug/*.py`, `article.md` |
