@@ -286,5 +286,6 @@ AIFFEL 수업과 개인 복습 노트를 바탕으로 다시 정리했다. 위 �
 
 <nav class="article-links" aria-label="관련 파일과 글 목록">
 <p><a href="/blog/ai-study/08-classification-metrics/">← 08. 분류 모델 평가, 정밀도·재현율과 임계값</a></p>
+<p><a href="/blog/ai-study/11-regularization-l1-l2/">11. 정칙화와 정규화, L1·L2가 헷갈렸던 이유 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="linear_regression_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>
