@@ -257,5 +257,6 @@ Transformer-XL은 앞 구간의 표현을 이어 사용해 긴 문맥을 다루�
 
 <nav aria-label="관련 글">
 <p><a href="/blog/ai-study/16-news-summarization/">← 16. 뉴스 요약봇 만들기</a></p>
+<p><a href="/blog/ai-study/18-transformer-translator/">18. Transformer로 번역기 만들기 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="transformer_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>
