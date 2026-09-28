@@ -1,0 +1,8 @@
+---
+---
+@import "minima";
+
+// Keep long inline API names inside the mobile content column.
+.post-content :not(pre) > code {
+  overflow-wrap: anywhere;
+}

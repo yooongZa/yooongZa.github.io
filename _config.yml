@@ -1,0 +1,27 @@
+title: yongZa의 공부 기록
+author: yongZa
+description: AI 수업을 들으며 배운 내용을 적어두는 곳.
+url: https://yooongza.github.io
+baseurl: ""
+lang: ko
+timezone: Asia/Seoul
+github_username: yooongZa
+
+theme: minima
+minima:
+  date_format: "%Y. %-m. %-d."
+show_excerpts: false
+header_pages: []
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Preserve the downloadable Markdown files as plain files.
+optional_front_matter:
+  enabled: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
