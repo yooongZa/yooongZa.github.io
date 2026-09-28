@@ -241,5 +241,6 @@ Heatmap(색상 행렬 그림)에 적을 내용은 네 집합의 역할, 행·열
 
 <nav aria-label="관련 글">
 <p><a href="/blog/ai-study/12-word-embedding/">← 12. 워드 임베딩, 단어를 벡터로 바꾸고 배우기</a></p>
+<p><a href="/blog/ai-study/14-seq2seq-attention/">14. RNN·LSTM에서 Seq2Seq와 Attention으로 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="weat_example.py" download>예제 코드</a> · <a href="article.md">Markdown</a>
 </nav>

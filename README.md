@@ -10,14 +10,14 @@ Minima 사용, 코드 검증과 공개 배포 절차를 정리했다. 다음 회
 
 ## 글 추가
 
-`_posts/YYYY-MM-DD-제목.md`에 글을 작성한다. 제목의 회차는 01부터 발행 순서대로 붙이며, 현재 01~13편 다음에는 14편을 쓴다. 기존 글의 공개 URL과 파일 경로는 유지한다. 같은 날 여러 글을 올릴 때는 `date`의 시각으로 순서를 정한다.
+`_posts/YYYY-MM-DD-제목.md`에 글을 작성한다. 제목의 회차는 01부터 발행 순서대로 붙이며, 현재 01~17편 다음에는 18편을 쓴다. 기존 글의 공개 URL과 파일 경로는 유지한다. 같은 날 여러 글을 올릴 때는 `date`의 시각으로 순서를 정한다.
 
 ```yaml
 ---
 layout: post
-title: "14. 다음 공부 기록"
+title: "18. 다음 공부 기록"
 date: 2026-09-29 09:00:00 +0900
-permalink: /blog/ai-study/14-next-topic/
+permalink: /blog/ai-study/18-next-topic/
 description: 이번에 공부한 내용
 ---
 ```
