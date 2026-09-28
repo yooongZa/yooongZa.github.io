@@ -1,6 +1,48 @@
 ---
 ---
+$text-color: #e6edf3;
+$background-color: #0d1117;
+$brand-color: #8ab4f8;
+$grey-color: #a5afbb;
+$grey-color-light: #30363d;
+$grey-color-dark: #e6edf3;
+
 @import "minima";
+
+// Use the same dark palette for native controls and every blog surface.
+:root { color-scheme: dark; }
+
+.site-header { border-top-color: $grey-color-light; }
+a:visited { color: #b7a5ef; }
+a:hover { color: $text-color; }
+a:focus-visible { outline: 2px solid $brand-color; outline-offset: 3px; }
+hr { border: 0; border-top: 1px solid $grey-color-light; }
+::selection { color: #fff; background: #264f78; }
+
+pre, code, .highlight, .highlighter-rouge .highlight {
+  color: $text-color;
+  background-color: #161b22;
+}
+
+table {
+  color: $text-color;
+  background-color: #161b22;
+  tr:nth-child(even) { background-color: #1c232c; }
+  th { background-color: #212934; border-color: $grey-color-light; }
+}
+
+// Override Minima's light-background Rouge token colors.
+.highlight {
+  .c, .cm, .cp, .c1, .cs, .gh, .go, .gp, .gu, .bp, .w { color: #a5afbb; }
+  .k, .kc, .kd, .kp, .kr, .kt, .o, .ow { color: #ff9b99; }
+  .m, .mf, .mh, .mi, .mo, .il { color: #b5cea8; }
+  .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss { color: #a5d6ff; }
+  .na, .nb, .nc, .no, .ni, .ne, .nf, .nt, .nv, .vc, .vg, .vi { color: #d2b5fa; }
+  .nn { color: $text-color; }
+  .err, .gr, .gt { color: #ffb4b4; background-color: #3d1c22; }
+  .gd, .gd .x { color: #ffb4b4; background-color: #3d1c22; }
+  .gi, .gi .x { color: #b5e3b5; background-color: #173323; }
+}
 
 // Keep the longer site title readable on narrow screens.
 @include media-query($on-palm) {
