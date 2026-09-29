@@ -1,3 +1,11 @@
+<div class="audio-note">
+<p>복습 음성 · 45분 13초 · RAG Family · 18장 · 파일에 1.1배속 적용</p>
+<audio style="width: 100%;" controls preload="metadata" aria-label="24. RAG Family, 검색과 답변을 개선하는 방법 복습 음성">
+<source src="/blog/assets/audio/24-rag-family.mp3" type="audio/mpeg">
+<a href="/blog/assets/audio/24-rag-family.mp3">음성 파일 듣기</a>
+</audio>
+</div>
+
 [23편](/blog/ai-study/23-rag-basics/)에서는 문서를 준비하고 질문과 관련된 조각을 찾아 답변의 근거로 건네는 흐름을 봤다. 이 흐름을 갖춘 뒤에도 엉뚱한 자료가 검색되거나, 필요한 조건을 놓치거나, 찾은 근거와 다른 답을 쓰는 문제가 생긴다.
 
 RAG Family에서는 이런 문제가 생기는 위치에 따라 개선 방법을 나눠 본다. 질문을 다시 쓰는 방법, 여러 검색 결과를 합치는 방법, 문맥을 줄이는 방법, 검색을 반복하는 방법이 각각 어느 단계에 들어가는지 살펴본다.
@@ -244,3 +252,9 @@ GraphRAG는 지식의 관계와 검색 구조를, Agentic RAG는 어떤 도구�
 자료 준비, 질문 처리, 근거 선택, 검색 흐름으로 나눠 보면 각 기법이 바꾸는 입력과 결과를 따라갈 수 있다. 문제를 발견한 단계와 개선할 단계를 연결해두면 다음 실습에서도 무엇을 비교할지 정하기 쉽다.
 
 AIFFEL의 RAG Family 학습 자료와 개인 복습용 음성을 참고해 개념을 다시 설명했다. 주요 연구는 본문의 논문·공식 문서 링크에서 확인할 수 있다. 카페 사례와 순위 계산은 설명용이며 실제 서비스의 검색 성능이나 모델 답변 품질을 측정한 결과는 없다.
+
+<nav aria-label="관련 글">
+<p><a href="/blog/ai-study/23-rag-basics/">← 23. RAG의 기본 흐름</a></p>
+<p><a href="/blog/ai-study/25-private-rag/">25. 프라이빗 RAG, 우리 인프라에서 검색하고 답변하기 →</a></p>
+<a href="/blog/">글 목록</a> · <a href="article.md">Markdown</a>
+</nav>
