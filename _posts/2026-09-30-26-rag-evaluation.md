@@ -330,4 +330,5 @@ context_recall: 1.0
 <nav aria-label="관련 글">
 <p><a href="/blog/ai-study/25-private-rag/">← 25. 프라이빗 RAG, 우리 인프라에서 검색하고 답변하기</a></p>
 <a href="/blog/">글 목록</a> · <a href="article.md">Markdown</a> · <a href="metric_example.py">손계산 예제</a> · <a href="/blog/assets/audio/26-rag-evaluation.mp3">복습 음성 MP3</a>
+<p><a href="/blog/ai-study/27-ai-agent-langgraph/">27. AI Agent와 LangGraph의 원리와 실습 →</a></p>
 </nav>
