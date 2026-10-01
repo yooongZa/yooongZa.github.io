@@ -14,7 +14,7 @@ description: "VGG에서 ResNet으로 이어지는 깊이와 잔차 연결, ident
 </audio>
 </div>
 
-지난 [09편](/blog/ai-study/15-linear-and-convolution-layers/)에서는 Linear와 Convolution이 입력을 어떻게 바꾸는지 봤다. 그런 층을 많이 쌓으면 어떤 문제가 생길까. ResNet의 `F(x) + x` 연결을 입력 모양과 활성화 함수까지 함께 보며 살펴본다.
+Linear와 Convolution을 깊게 쌓으면 층마다 입력이 다른 표현으로 바뀐다. ResNet의 `F(x) + x` 연결은 입력 모양과 활성화 함수를 함께 확인하며 읽는다.
 
 위 복습 음성은 **「딥러닝 레이어의 이해 1과 2」**다. 09편과 같은 통합 음성이며 Linear·CNN부터 VGG·ResNet까지 포함한다. 본문에서는 뒷부분인 깊은 신경망과 잔차 연결을 다룬다.
 
@@ -225,8 +225,6 @@ ResNet 전체는 여러 블록 뒤에서 특징 맵을 모으고 분류층으로
 작은 예제로 **잔차 블록의 순전파, 두 지름길의 모양, `F=0`일 때의 출력, 단순 미분식**을 확인했다. VGG와 ResNet의 정확도·학습 시간 비교는 실행하지 않았다.
 
 실행 환경: Python 3.12.9, NumPy 2.5.2, PyTorch 2.13.0 (CPU), SentencePiece 0.2.2, Gensim 4.4.0. 내려받은 파일은 `python resnet_example.py`로 실행한다.
-
-다음에는 이미지에서 텍스트로 넘어가서, 문장을 토큰과 정수 ID로 바꾸는 과정을 정리한다.
 
 <nav aria-label="관련 글">
 <p><a href="/blog/ai-study/15-linear-and-convolution-layers/">← 09. Linear에서 CNN까지, 레이어가 바꾸는 것</a></p>

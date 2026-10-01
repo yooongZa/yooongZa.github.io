@@ -14,7 +14,7 @@ description: "모델과 토크나이저, 설정과 가중치, 동적 패딩, Tra
 </audio>
 </div>
 
-Hugging Face의 Hub, Transformers, Datasets는 각각 어떤 역할을 할까. 앞에서 작게 직접 만들었던 모델을 떠올리며 문장 하나가 모델 입력으로 바뀌는 과정과 각 클래스의 역할을 살펴봤다.
+Hugging Face의 Hub, Transformers, Datasets는 각각 맡은 역할이 다르다. 문장 하나가 모델 입력으로 바뀌는 과정을 각 클래스의 역할과 연결해봤다.
 
 위 음성은 NLP Framework 수업을 복습하는 생성 음성이다. 1.1배속이 파일에 반영돼 있다. 본문 코드는 외부 모델을 내려받지 않고, 직접 만든 작은 어휘와 분류 모델로 입력 경로만 실행한다.
 
