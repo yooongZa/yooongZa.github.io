@@ -85,6 +85,7 @@ Checkpoint(상태 저장본)는 실행 과정의 상태를 보관한 기록이�
 개인 학습 자료를 바탕으로 쓴 개념 정리다. 모델과 도구의 실제 실행 결과는 각 실습의 기록과 산출물로 확인한다. API 동작의 근거는 각 절의 공식 문서에 연결했다.
 
 <nav aria-label="관련 글">
+<p><a href="/blog/ai-study/28-agent-loop-mcp/">28. 에이전트 루프와 MCP, 실패 복구 →</a></p>
 <p><a href="/blog/ai-study/26-rag-evaluation/">← 26. RAG 평가, 검색 근거와 생성 답변을 따로 살펴보기</a></p>
 <a href="/blog/">글 목록</a> · <a href="article.md">Markdown</a> · <a href="/blog/assets/audio/27-ai-agent-langgraph.mp3">복습 음성 MP3</a>
 </nav>
