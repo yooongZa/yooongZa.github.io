@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta property="og:title" content="손목묵주 · 함께 기도 초대"><meta property="og:description" content="앱에서 가입을 신청하고, 같은 지향에 기도를 보태세요. 실제 묵주로 기도한 기록도 입력할 수 있어요.">
+<meta name="description" content="공동체 초대 링크를 열고 가입을 신청하는 안내 페이지입니다.">
+<title>함께 기도 초대 · Wrist Rosary</title><link rel="stylesheet" href="invite.css">
+</head>
+<body><main>
+<p class="brand">WRIST ROSARY · 손목묵주</p>
+<span class="symbol" aria-hidden="true">♡</span><h1>함께 기도해요</h1>
+<p class="lead">같은 지향으로 묵주기도를 봉헌하고,<br>함께 모은 기도를 확인해요.</p>
+<section class="card" aria-labelledby="invite-title">
+<h2 id="invite-title">공동체 초대</h2>
+<p id="status" role="status">초대 링크를 확인하고 있어요.</p>
+<a id="open-app" class="primary" hidden>앱에서 가입 신청하기</a>
+<button id="copy" type="button" hidden>초대 코드 복사</button>
+<label for="token" id="token-label" hidden>앱에서 ‘초대 코드로 가입’에 붙여넣을 코드</label>
+<input id="token" type="text" readonly hidden aria-label="초대 코드" spellcheck="false">
+<p id="copy-status" class="small" role="status"></p>
+</section>
+<section class="card"><h2>처음이라면 이렇게 시작해요</h2>
+<ol><li>앱을 열고 iPhone은 Apple, Android는 Google로 로그인해요.</li><li>공동체에서 쓸 이름과 안내를 확인하고 가입을 신청해요.</li><li>운영자가 승인하면 기도 기록을 공동 목표에 보탤 수 있어요.</li></ol>
+<p class="small">초대는 발급 후 7일 동안 유효합니다. 만료·폐기 여부는 앱에서 신청할 때 확인하며, 운영자 승인 전에는 공동체 기록을 볼 수 없습니다.</p></section>
+<section class="card"><h2>실제 묵주를 사용해도 괜찮아요</h2><p>‘묵주로 기도한 기록 입력’에서 날짜와 단 수만 남겨 보세요. 앱으로 기도를 진행한 기록이 없어도 함께 보탤 수 있어요.</p></section>
+<aside class="pilot"><strong>시범 운영 안내</strong><p>현재 공동체 기능은 개발용 시범 빌드에 제공됩니다. 앱이 없거나 기능이 보이지 않으면 초대한 운영자에게 설치 안내를 받아 주세요. 설치 후 이 초대 링크로 돌아오거나 위 코드를 직접 붙여넣을 수 있습니다.</p></aside>
+<footer>회원 이름·개인 기도 내역은 이 페이지에 표시하지 않습니다.<br>Wrist Rosary · 함께 기도</footer>
+</main><script src="invite.js"></script></body></html>
