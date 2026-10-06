@@ -134,5 +134,6 @@ Roots(작업 범위)는 서버에 관련 파일 경로를 알려준다. 접근 �
 
 <nav aria-label="관련 글">
 <p><a href="/blog/ai-study/27-ai-agent-langgraph/">← 27. AI Agent와 LangGraph의 원리와 실습</a></p>
+<p><a href="/blog/ai-study/29-context-harness-loop/">29. 컨텍스트, 하네스, 루프: 모델 주변을 설계하기 →</a></p>
 <a href="/blog/">글 목록</a> · <a href="article.md">Markdown</a> · <a href="narration.txt">24장 낭독 대본 TXT</a> · <a href="/blog/assets/audio/28-agent-loop-mcp.mp3">복습 음성 MP3</a> · <a href="/blog/assets/audio/28-agent-loop-mcp.m4b">24장 오디오북 M4B</a>
 </nav>
