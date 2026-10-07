@@ -203,3 +203,4 @@ Compaction(누적 기록 압축)은 다음 작업에 필요한 정보로 대화�
 <p><a href="/blog/ai-study/28-agent-loop-mcp/">← 28. 에이전트 루프와 MCP, 실패 복구</a></p>
 <a href="/blog/">글 목록</a> · <a href="article.md">Markdown</a> · <a href="loop_example.py">종료 판정 예제</a> · <a href="narration.txt">24장 낭독 대본 TXT</a> · <a href="/blog/assets/audio/29-context-harness-loop.mp3">복습 음성 MP3</a> · <a href="/blog/assets/audio/29-context-harness-loop.m4b">24장 오디오북 M4B</a>
 </nav>
+- [다음 글: 30. 멀티모달 RAG: 표와 차트를 근거로 답하기](/blog/ai-study/30-multimodal-rag/)
