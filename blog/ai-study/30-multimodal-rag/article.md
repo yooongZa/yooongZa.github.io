@@ -204,3 +204,4 @@ AIFFEL에서 학습한 멀티모달 RAG의 개념·구현 흐름을 바탕으로
 - [본문 Markdown](/blog/ai-study/30-multimodal-rag/article.md)
 - [이전 글: 29. 컨텍스트, 하네스, 루프](/blog/ai-study/29-context-harness-loop/)
 - [글 목록](/blog/)
+- [다음 글: 31. 모델 고르기: 메모리, 라이선스, 비용의 기준](/blog/ai-study/31-model-selection/)
