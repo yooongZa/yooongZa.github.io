@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2bOrNot2b 다운로드</title>
+  <meta name="description" content="고민 앞에서 잠깐, 투비와 함께 골라보는 시간. iPhone과 Android에서 만나보세요.">
+  <link rel="canonical" href="https://yooongza.github.io/2bornot2b/download/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2bOrNot2b · 투비와 함께 골라보세요">
+  <meta property="og:description" content="손목에서 답을 받고, 휴대폰에서 순간을 나눠보세요.">
+  <meta property="og:url" content="https://yooongza.github.io/2bornot2b/download/">
+  <meta property="og:image" content="https://yooongza.github.io/2bornot2b/download/app-icon.png">
+  <meta property="og:image:alt" content="2bOrNot2b">
+  <meta name="theme-color" content="#faf7ef">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #faf7ef; color: #42392f; font: 17px/1.7 system-ui, sans-serif; }
+    main { width: min(100%, 520px); margin: 0 auto; padding: 72px 24px 40px; text-align: center; }
+    .icon { width: 96px; height: 96px; border-radius: 24px; }
+    h1 { margin: 20px 0 8px; font-size: clamp(2rem, 7vw, 2.7rem); line-height: 1.25; letter-spacing: -.04em; }
+    .intro { margin: 0 0 32px; }
+    .card { padding: 24px; background: #fffdf8; border: 1px solid #e9e0d2; border-radius: 24px; }
+    #status { margin: 0 0 20px; font-size: .94rem; }
+    .stores { display: grid; gap: 12px; }
+    .store { display: block; padding: 15px 20px; background: #42392f; color: #fffdf8; border-radius: 14px; text-decoration: none; font-weight: 650; }
+    .store:hover { background: #615044; }
+    a:focus-visible { outline: 3px solid #ac5829; outline-offset: 4px; }
+    .requirement { margin: 24px 0 0; color: #6d6052; font-size: .86rem; }
+    footer { margin-top: 28px; font-size: .86rem; }
+    footer a { color: #765538; text-underline-offset: 4px; }
+    @media (max-width: 360px) { main { padding: 40px 16px; } .card { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="icon" src="app-icon.png" width="96" height="96" alt="">
+    <h1>2bOrNot2b</h1>
+    <p class="intro" id="intro">손목에서 답을 받고,<br>휴대폰에서 순간을 나눠보세요.</p>
+    <section class="card" aria-label="Download">
+      <p id="status" role="status">사용하는 휴대폰의 스토어를 선택해 주세요.</p>
+      <div class="stores">
+        <a class="store" id="apple" href="https://apps.apple.com/app/id6774472519">App Store</a>
+        <a class="store" id="android" href="https://play.google.com/store/apps/details?id=com.limod.gonogo">Google Play</a>
+      </div>
+      <p class="requirement" id="requirement">답을 받으려면 Apple Watch 또는 Wear OS 시계가 필요해요.</p>
+    </section>
+    <footer><a id="support" href="/2bornot2b/">앱 사용 안내</a></footer>
+  </main>
+  <script>
+    (() => {
+      const copy = {
+        ko: ["손목에서 답을 받고, 휴대폰에서 순간을 나눠보세요.", "사용하는 휴대폰의 스토어를 선택해 주세요.", "스토어가 열리지 않으면 아래 버튼을 눌러 주세요.", "답을 받으려면 Apple Watch 또는 Wear OS 시계가 필요해요.", "앱 사용 안내"],
+        en: ["Find your answer on your wrist. Share the moment from your phone.", "Choose the store for your phone.", "If the store does not open, tap a button below.", "An Apple Watch or Wear OS watch is required to receive answers.", "App support"],
+        ja: ["手首で答えを受け取り、スマートフォンからその瞬間をシェア。", "お使いのスマートフォンのストアを選んでください。", "ストアが開かない場合は、下のボタンを押してください。", "答えを受け取るにはApple WatchまたはWear OSの時計が必要です。", "アプリの使い方"],
+        "zh-Hans": ["在手腕上获得答案，用手机分享这一刻。", "请选择您手机对应的应用商店。", "如果商店未打开，请点击下方按钮。", "需要 Apple Watch 或 Wear OS 手表才能获得答案。", "应用使用指南"],
+        "zh-Hant": ["在手腕上獲得答案，用手機分享這一刻。", "請選擇您手機對應的應用程式商店。", "如果商店未開啟，請點擊下方按鈕。", "需要 Apple Watch 或 Wear OS 手錶才能獲得答案。", "App 使用指南"],
+        th: ["รับคำตอบบนข้อมือ แล้วแชร์ช่วงเวลานั้นจากโทรศัพท์", "เลือกร้านแอปสำหรับโทรศัพท์ของคุณ", "หากร้านแอปไม่เปิด ให้แตะปุ่มด้านล่าง", "ต้องมี Apple Watch หรือนาฬิกา Wear OS เพื่อรับคำตอบ", "วิธีใช้แอป"],
+        es: ["Recibe la respuesta en tu muñeca y comparte el momento desde tu móvil.", "Elige la tienda de tu móvil.", "Si la tienda no se abre, pulsa un botón de abajo.", "Necesitas un Apple Watch o un reloj Wear OS para recibir respuestas.", "Ayuda de la app"],
+        pt: ["Receba a resposta no pulso e compartilhe o momento pelo celular.", "Escolha a loja do seu celular.", "Se a loja não abrir, toque em um botão abaixo.", "É necessário um Apple Watch ou relógio Wear OS para receber respostas.", "Ajuda do app"]
+      };
+      const language = (navigator.language || "en").toLowerCase();
+      const key = language.startsWith("zh") ? (/hant|tw|hk|mo/.test(language) ? "zh-Hant" : "zh-Hans") : language.split("-")[0];
+      const text = copy[key] || copy.en;
+      document.documentElement.lang = copy[key] ? key : "en";
+      ["intro", "status", "requirement", "support"].forEach((id, i) => {
+        document.getElementById(id).textContent = text[[0, 1, 3, 4][i]];
+      });
+      const ua = navigator.userAgent || "";
+      // Link-preview crawlers and unknown devices keep the store selection page.
+      const crawler = /bot|crawler|spider|facebookexternalhit|kakaotalk-scrap|kakaostory-og-reader|developers\.kakao\.com\/robots/i.test(ua);
+      const isApple = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+      const target = crawler ? null : /Android/i.test(ua) ? "android" : isApple ? "apple" : null;
+      if (target) {
+        document.getElementById("status").textContent = text[2];
+        // Only these fixed store links are destinations; query parameters are ignored.
+        try { window.location.replace(document.getElementById(target).href); } catch (_) { /* Keep manual links available. */ }
+      }
+    })();
+  </script>
+</body>
+</html>
