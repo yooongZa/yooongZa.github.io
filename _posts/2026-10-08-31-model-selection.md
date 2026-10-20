@@ -221,3 +221,4 @@ print(f"가상 단가의 100건 비용: ${api_cost(600_000, 50_000, 0.8, 2.4):.2
 - [본문 Markdown](/blog/ai-study/31-model-selection/article.md)
 - [이전 글: 30. 멀티모달 RAG: 표와 차트를 근거로 답하기](/blog/ai-study/30-multimodal-rag/)
 - [전체 글 목록](/blog/)
+- [다음 글: 32. filename 개발기: 8GB PC에서 사진과 영상을 정리하는 로컬 AI](/blog/ai-study/32-filename-local-ai/)
