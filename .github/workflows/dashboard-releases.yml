@@ -1,0 +1,37 @@
+name: Dashboard release counts
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: dashboard-release-counts
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Read public release metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/dashboard-releases.py > /tmp/releases.json
+      - name: Publish public metrics branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --heads origin dashboard-stats >/dev/null; then
+            git fetch origin dashboard-stats
+            git checkout -B dashboard-stats FETCH_HEAD
+          else
+            git checkout --orphan dashboard-stats
+            git rm -rf .
+          fi
+          cp /tmp/releases.json releases.json
+          git add releases.json
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git diff --cached --quiet || git commit -m "Update public release download counts"
+          git push origin HEAD:dashboard-stats

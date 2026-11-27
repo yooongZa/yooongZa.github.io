@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2bOrNot2b 다운로드</title>
+  <meta name="description" content="고민 앞에서 잠깐, 투비와 함께 골라보는 시간. iPhone과 Apple Watch에서 만나보세요.">
+  <link rel="canonical" href="https://yooongza.github.io/2bornot2b/download/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2bOrNot2b · 투비와 함께 골라보세요">
+  <meta property="og:description" content="손목에서 답을 받고, 휴대폰에서 순간을 나눠보세요.">
+  <meta property="og:url" content="https://yooongza.github.io/2bornot2b/download/">
+  <meta property="og:image" content="https://yooongza.github.io/2bornot2b/download/app-icon.png">
+  <meta property="og:image:alt" content="2bOrNot2b">
+  <meta name="theme-color" content="#faf7ef">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #faf7ef; color: #42392f; font: 17px/1.7 system-ui, sans-serif; }
+    main { width: min(100%, 520px); margin: 0 auto; padding: 72px 24px 40px; text-align: center; }
+    .icon { width: 96px; height: 96px; border-radius: 24px; }
+    h1 { margin: 20px 0 8px; font-size: clamp(2rem, 7vw, 2.7rem); line-height: 1.25; letter-spacing: -.04em; }
+    .intro { margin: 0 0 32px; }
+    .card { padding: 24px; background: #fffdf8; border: 1px solid #e9e0d2; border-radius: 24px; }
+    #status { margin: 0 0 20px; font-size: .94rem; }
+    .stores { display: grid; gap: 12px; }
+    .store { display: block; padding: 15px 20px; background: #42392f; color: #fffdf8; border-radius: 14px; text-decoration: none; font-weight: 650; }
+    .store:hover { background: #615044; }
+    a:focus-visible { outline: 3px solid #ac5829; outline-offset: 4px; }
+    .requirement { margin: 24px 0 0; color: #6d6052; font-size: .86rem; }
+    footer { margin-top: 28px; font-size: .86rem; }
+    footer a { color: #765538; text-underline-offset: 4px; }
+    @media (max-width: 360px) { main { padding: 40px 16px; } .card { padding: 20px; } }
+  </style>
+<script defer src="https://stats.lazinessisthemotherof.dev/github-analytics.js?v=3"></script>
+</head>
+<body>
+  <main>
+    <img class="icon" src="app-icon.png" width="96" height="96" alt="">
+    <h1>2bOrNot2b</h1>
+    <p class="intro" id="intro">손목에서 답을 받고,<br>휴대폰에서 순간을 나눠보세요.</p>
+    <section class="card" aria-label="Download">
+      <p id="status" role="status">App Store에서 다운로드해 주세요.</p>
+      <div class="stores">
+        <a class="store" id="apple" href="https://stats.lazinessisthemotherof.dev/go/2bornot2b-apple">App Store</a>
+      </div>
+      <p class="requirement" id="requirement">답을 받으려면 Apple Watch가 필요해요.</p>
+    </section>
+    <footer><a id="support" href="/2bornot2b/">앱 사용 안내</a></footer>
+  </main>
+  <script>
+    (() => {
+      const copy = {
+        ko: ["손목에서 답을 받고, 휴대폰에서 순간을 나눠보세요.", "App Store에서 다운로드해 주세요.", "스토어가 열리지 않으면 아래 버튼을 눌러 주세요.", "답을 받으려면 Apple Watch가 필요해요.", "앱 사용 안내"],
+        en: ["Find your answer on your wrist. Share the moment from your phone.", "Download on the App Store.", "If the store does not open, tap the button below.", "An Apple Watch is required to receive answers.", "App support"],
+        ja: ["手首で答えを受け取り、スマートフォンからその瞬間をシェア。", "App Storeからダウンロードしてください。", "ストアが開かない場合は、下のボタンを押してください。", "答えを受け取るにはApple Watchが必要です。", "アプリの使い方"],
+        "zh-Hans": ["在手腕上获得答案，用手机分享这一刻。", "请从 App Store 下载。", "如果商店未打开，请点击下方按钮。", "需要 Apple Watch 才能获得答案。", "应用使用指南"],
+        "zh-Hant": ["在手腕上獲得答案，用手機分享這一刻。", "請從 App Store 下載。", "如果商店未開啟，請點擊下方按鈕。", "需要 Apple Watch 才能獲得答案。", "App 使用指南"],
+        th: ["รับคำตอบบนข้อมือ แล้วแชร์ช่วงเวลานั้นจากโทรศัพท์", "ดาวน์โหลดบน App Store", "หากร้านแอปไม่เปิด ให้แตะปุ่มด้านล่าง", "ต้องมี Apple Watch เพื่อรับคำตอบ", "วิธีใช้แอป"],
+        es: ["Recibe la respuesta en tu muñeca y comparte el momento desde tu móvil.", "Descarga la app en el App Store.", "Si la tienda no se abre, pulsa el botón de abajo.", "Necesitas un Apple Watch para recibir respuestas.", "Ayuda de la app"],
+        pt: ["Receba a resposta no pulso e compartilhe o momento pelo celular.", "Baixe na App Store.", "Se a loja não abrir, toque no botão abaixo.", "É necessário um Apple Watch para receber respostas.", "Ajuda do app"]
+      };
+      const language = (navigator.language || "en").toLowerCase();
+      const key = language.startsWith("zh") ? (/hant|tw|hk|mo/.test(language) ? "zh-Hant" : "zh-Hans") : language.split("-")[0];
+      const text = copy[key] || copy.en;
+      document.documentElement.lang = copy[key] ? key : "en";
+      ["intro", "status", "requirement", "support"].forEach((id, i) => {
+        document.getElementById(id).textContent = text[[0, 1, 3, 4][i]];
+      });
+      const ua = navigator.userAgent || "";
+      // Link-preview crawlers and non-Apple devices keep the download page.
+      const crawler = /bot|crawler|spider|facebookexternalhit|kakaotalk-scrap|kakaostory-og-reader|developers\.kakao\.com\/robots/i.test(ua);
+      const isApple = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+      const target = !crawler && isApple ? "apple" : null;
+      if (target) {
+        document.getElementById("status").textContent = text[2];
+        // The App Store link is the fixed destination; query parameters are ignored.
+        try { window.location.replace(document.getElementById(target).href); } catch (_) { /* Keep the App Store button available. */ }
+      }
+    })();
+  </script>
+</body>
+</html>
